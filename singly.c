@@ -151,6 +151,21 @@ void del_end(node*start)
     }
     
 }
+// reverse singly linked list
+void reverse(node**start)
+{
+    node*p=*start;
+    node*q=NULL;
+    node*r;
+    while(p!=NULL)
+    {
+        r=q;
+        q=p;
+        p=p->link;
+        q->link=r;
+    }
+    *start=q;
+}
 
 
 
@@ -165,12 +180,13 @@ int main()
     
     while(flag==1)
     {
-        printf("\n");
+        printf("\nSINGLY LINKED LIST\n");
         printf("Enter your choice: \n");
         printf("1. Create a node\n");
         printf("2. Display nodes\n");
         printf("3. Add a node\n");
         printf("4. Delete a node\n");
+        printf("5. Reverse linked list\n");
         scanf("%d",&ch1);
 
         if(ch1==1)
@@ -227,6 +243,10 @@ int main()
                 {
                     del_end(start);
                 }
+        }
+        else if(ch1==5)
+        {
+            reverse(&start);
         }
         printf("Do you wish to continue?(Y/N)\n");
         scanf(" %c",&ch2);
